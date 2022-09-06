@@ -1,29 +1,28 @@
-def find_paths(row, col, trace, paths):
-    if row >= len(trace) or col >= len(trace[0]):
+def find_paths(row, col, map, paths):
+    if row >= len(map) or col >= len(map[0]):
         return
 
-    if trace[row][col] == '!':
+    if map[row][col] == 'v':
         return
 
-    if row == len(trace) - 1 and col == len(trace[0]) - 1:
+    if map[row][col] == 'e':
         paths.append(0)
     else:
-        trace[row][col] = '!'
-        find_paths(row + 1, col, trace, paths)
-        find_paths(row, col + 1, trace, paths)
-        trace[row][col] = '-'
+        map[row][col] = 'v'
+        find_paths(row + 1, col, map, paths)
+        find_paths(row, col + 1, map, paths)
+        map[row][col] = '-'
 
     return len(paths)
 
 
-rows = int(input())
-cols = int(input())
+m = int(input())
+n = int(input())
 
-matrix = []
+map = []
+for _ in range(m):
+    map.append(['-'] * n)
 
-for i in range(rows):
-    matrix.append([])
-    for j in range(cols):
-        matrix[i].append('-')
+map[m - 1][n - 1] = 'e'
 
-print(find_paths(0, 0, matrix, []))
+print(find_paths(0, 0, map, []))

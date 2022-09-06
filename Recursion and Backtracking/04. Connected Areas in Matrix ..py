@@ -6,7 +6,7 @@ class Area:
 
 
 def explore_area(row, col, matrix):
-    if row < 0 or col < 0 or row >= len(matrix) or col >= len(matrix[0]):
+    if row < 0 or col < 0 or row == len(matrix) or col == len(matrix[0]):
         return 0
 
     if matrix[row][col] != '-':
@@ -15,8 +15,8 @@ def explore_area(row, col, matrix):
     matrix[row][col] = 'v'
 
     result = 1
-    result += explore_area(row - 1, col, matrix)
     result += explore_area(row + 1, col, matrix)
+    result += explore_area(row - 1, col, matrix)
     result += explore_area(row, col - 1, matrix)
     result += explore_area(row, col + 1, matrix)
 
@@ -25,20 +25,18 @@ def explore_area(row, col, matrix):
 
 rows = int(input())
 cols = int(input())
-
-matrix = []
+field = []
 
 for _ in range(rows):
-    matrix.append(list(input()))
+    field.append(list(input()))
 
 areas = []
 for row in range(rows):
     for col in range(cols):
-        size = explore_area(row, col, matrix)
+        size = explore_area(row, col, field)
         if size == 0:
             continue
         areas.append(Area(row, col, size))
-
 
 print(f'Total areas found: {len(areas)}')
 for idx, area in enumerate(sorted(areas, key=lambda a: a.size, reverse=True)):

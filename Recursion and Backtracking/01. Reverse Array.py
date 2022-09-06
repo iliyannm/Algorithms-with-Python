@@ -1,14 +1,15 @@
 def reverse_array(idx, array):
-    if idx == len(array) // 2:
+    mid_idx = len(array) // 2
+
+    if idx >= mid_idx:
         return
 
-    swap_idx = len(array) - 1 - idx
-    array[idx], array[swap_idx] = array[swap_idx], array[idx]
+    array[idx], array[len(array) - 1 - idx] = array[len(array) - 1 - idx], array[idx]
     reverse_array(idx + 1, array)
 
 
-elements = input().split()
+array = [int(x) for x in input().split()]
 
-reverse_array(0, elements)
+reverse_array(0, array)
 
-print(' '.join(elements))
+print(' '.join(str(x) for x in array))

@@ -1,13 +1,16 @@
-def find_combo(idx, combination, number):
-    if idx >= len(combination):
-        print(*combination, sep=' ')
+def find_combo(idx, vector):
+    if idx == len(vector):
+        print(' '.join(str(x) for x in vector))
         return
 
-    for num in range(1, number + 1):
-        combination[idx] = num
-        find_combo(idx + 1, combination, number)
+    for i in range(1, len(vector) + 1):
+        vector[idx] = i
+        find_combo(idx + 1, vector)
 
 
 n = int(input())
-sequence = [1] * n
-find_combo(0, sequence, n)
+vector = []
+for _ in range(n):
+    vector = [None] * n
+
+find_combo(0, vector)
