@@ -1,6 +1,6 @@
 def generate_vector(idx, vector):
-    if idx >= len(vector):
-        print(*vector, sep='')
+    if idx == len(vector):
+        print(''.join(str(x) for x in vector))
         return
 
     for num in range(2):
@@ -9,5 +9,6 @@ def generate_vector(idx, vector):
 
 
 n = int(input())
-vector = [0] * n
+vector = [None] * n
+
 generate_vector(0, vector)

@@ -1,10 +1,10 @@
-def drawing(n):
+def drawning(n):
     if n == 0:
         return
 
     print('*' * n)
-    drawing(n - 1)
+    drawning(n - 1)
     print('#' * n)
 
 
-drawing(int(input()))
+drawning(int(input()))

@@ -1,10 +1,9 @@
-def calculate_sum(nums, idx):
-    if idx == len(nums) - 1:
-        return nums[idx]
+def calc_sum(idx, numbers):
+    if idx == len(numbers) - 1:
+        return numbers[idx]
 
-    return nums[idx] + calculate_sum(nums, idx + 1)
+    return numbers[idx] + calc_sum(idx + 1, numbers)
 
 
-numbers = [int(x) for x in input().split()]
-
-print(calculate_sum(numbers, 0))
+nums = [int(x) for x in input().split()]
+print(calc_sum(0, nums))

@@ -1,11 +1,11 @@
 def find_fibonacci(n):
+    fib0 = 1
+    fib1 = 1
     result = 0
-    fib_1 = 1
-    fib_2 = 1
 
     for i in range(n - 1):
-        result = fib_1 + fib_2
-        fib_1, fib_2 = fib_2, result
+        result = fib0 + fib1
+        fib0, fib1 = fib1, result
 
     return result
 
