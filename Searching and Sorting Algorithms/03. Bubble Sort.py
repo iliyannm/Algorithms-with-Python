@@ -1,15 +1,13 @@
 numbers = [int(x) for x in input().split()]
-is_sorted = False
-counter = 0
 
-while not is_sorted:
-    is_sorted = True
 
-    for idx in range(1, len(numbers)-counter):
-        if numbers[idx - 1] > numbers[idx]:
-            numbers[idx], numbers[idx - 1] = numbers[idx - 1], numbers[idx]
-            is_sorted = False
+def bubble_sort(nums):
+    for i in range(len(nums) - 1):
+        for j in range(1, len(nums)):
+            if nums[j - 1] > nums[j]:
+                nums[j - 1], nums[j] = nums[j], nums[j - 1]
 
-    counter += 1
+    return ' '.join(str(x) for x in nums)
 
-print(*numbers, sep=' ')
+
+print(bubble_sort(numbers))
