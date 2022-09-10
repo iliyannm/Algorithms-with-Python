@@ -1,7 +1,7 @@
-numbers = [int(x) for x in input().split()]
+nums = [int(x) for x in input().split()]
 
 
-def quick_sort(nums, start, end):
+def quick_sort(start, end, nums):
     if start >= end:
         return
 
@@ -17,6 +17,12 @@ def quick_sort(nums, start, end):
         if nums[right_pointer] >= nums[pivot]:
             right_pointer -= 1
 
-    quick_sort(nums, start, right_pointer - 1)
-    quick_sort(nums, left_pointer, end)
+    nums[pivot], nums[right_pointer] = nums[right_pointer], nums[pivot]
 
+    quick_sort(start, right_pointer - 1, nums)
+    quick_sort(left_pointer, end, nums)
+
+
+quick_sort(0, len(nums) - 1, nums)
+
+print(*nums, sep=' ')
