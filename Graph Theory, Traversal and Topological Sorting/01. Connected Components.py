@@ -10,19 +10,18 @@ def dfs(node, graph, visited, component):
     component.append(node)
 
 
-nodes = int(input())
+n = int(input())
 graph = []
 
-for node in range(nodes):
+for i in range(n):
     line = input()
-    children = [] if line == '' else [int(x) for x in line.split()]
-    graph.append(children)
+    graph.append([] if line == '' else [int(x) for x in line.split()])
 
-visited = [False] * nodes
+visited = [None] * n
 
-for node in range(nodes):
+for node in range(len(graph)):
     if visited[node]:
         continue
     component = []
     dfs(node, graph, visited, component)
-    print(f'Connected component: {" ".join(str(n) for n in component)}')
+    print(f"Connected component: {' '.join(str(x) for x in component)}")
